@@ -6,6 +6,7 @@ authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<=3.13"
 dependencies = [
     "crewai[tools]>=0.83.0,<1.0.0",
+    "e2b-code-interpreter>=1.0.2",
     "weaviate-client>=4.9.6",
 ]
 

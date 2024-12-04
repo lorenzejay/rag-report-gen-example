@@ -743,6 +743,38 @@ wheels = [
 ]
 
 [[package]]
+name = "e2b"
+version = "1.0.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "httpcore" },
+    { name = "httpx" },
+    { name = "packaging" },
+    { name = "protobuf" },
+    { name = "python-dateutil" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/03/1a/3f7004c48d48530f08482487d561d5f55cce95bdc609c986657506059d1a/e2b-1.0.4.tar.gz", hash = "sha256:5ed3db4f984e52cf3aabb717725493ff060a8374b7c878b31bceeff46a0b5648", size = 44376 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/88/9b/d68527da1cfbe7f698574ff2bc4ea2bcefc2908e136ea1838ebb69f051ab/e2b-1.0.4-py3-none-any.whl", hash = "sha256:1a9c765eb1b2cc291c5ebd3f2e268f8fba9471a12f470f4651395b5753730170", size = 81720 },
+]
+
+[[package]]
+name = "e2b-code-interpreter"
+version = "1.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "e2b" },
+    { name = "httpx" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/97/5b/ce7eb80acd456c08377995b7b02f80c796b403801835263ca013a3bea9ac/e2b_code_interpreter-1.0.2.tar.gz", hash = "sha256:b2a173209205bc0fce09a90b145cd6c739ff6130d9ec850bdc38e70c1b666f67", size = 9243 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/64/57/48b4ff6b7fd67aab2d33dde909d832e65c944b36784b4725a640965bb0d2/e2b_code_interpreter-1.0.2-py3-none-any.whl", hash = "sha256:02f2786a094550be8b96093c7cfcae9ff24cbeddb4dff76f3c2e6c4d06d4ba86", size = 12032 },
+]
+
+[[package]]
 name = "embedchain"
 version = "0.1.125"
 source = { registry = "https://pypi.org/simple" }
@@ -3371,12 +3403,14 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "crewai", extra = ["tools"] },
+    { name = "e2b-code-interpreter" },
     { name = "weaviate-client" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "crewai", extras = ["tools"], specifier = ">=0.83.0,<1.0.0" },
+    { name = "e2b-code-interpreter", specifier = ">=1.0.2" },
     { name = "weaviate-client", specifier = ">=4.9.6" },
 ]
 
