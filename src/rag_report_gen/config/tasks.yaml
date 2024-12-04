@@ -1,0 +1,33 @@
+rag_task:
+  description: >
+    Answer questions based on the provided query. Find the most relevant information
+    from the financial data. You might need to generate the query to find the
+    most relevant information from the vector database.
+    This is the query: {query}
+  expected_output: >
+    The answer to the relevant question: {query}
+  agent: rag_agent
+
+reporting_task:
+  description: >
+    Review the context you got and expand each topic into a full section for a report.
+    Generate a graph based on the data generating trends from the data.
+    Use matplotlib to generate the graphs.
+    You can use the code execution agent to execute the code and generate the output.
+    The output file should be a .ipynb (python jupiter notebook) file.
+    Any markdown should be formatted appropriately. With the code blocks properly formatted.
+  expected_output: >
+    Python code that can be executed to generate the output which consists of a graph report.
+    The output file should be a valid python file.
+
+  agent: reporting_analyst
+  output_file: "outputs/report.ipynb"
+
+report_for_stakeholders_task:
+  description: >
+    Take the output of the reporting analyst agent and write a report for the stakeholders.
+  expected_output: >
+    A fully fledge reports with the mains topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: report_for_stakeholders_agent
+  output_file: "outputs/q4_report.md"
