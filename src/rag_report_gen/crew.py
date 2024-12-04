@@ -1,6 +1,7 @@
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
+from crewai.project import CrewBase, agent, crew, task
 from rag_report_gen.tools.weaviate_tool import WeaviateTool
+from rag_report_gen.tools.code_execution_tool import CodeInterpreterTool
 # Uncomment the following line to use an example of a custom tool
 # from rag_report_gen.tools.custom_tool import MyCustomTool
 
@@ -37,8 +38,11 @@ class RagReportGen:
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
-        return Agent(config=self.agents_config["reporting_analyst"], verbose=True)
+    def graph_generation_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config["graph_generation_agent"],
+            verbose=True,
+        )
 
     @agent
     def report_for_stakeholders_agent(self) -> Agent:
@@ -54,20 +58,12 @@ class RagReportGen:
             config=self.tasks_config["rag_task"],
         )
 
-    def task_formatter_callback(self, task):
-        print("task.raw", task.raw)
-        if task.raw:
-            if "```" in task.raw:
-                updated_raw = task.raw.replace("```", "")
-                print("updated_raw", updated_raw)
-                with open("outputs/report.ipynb", "w") as f:
-                    f.write(updated_raw)
-
     @task
-    def reporting_task(self) -> Task:
+    def graph_generation_task(self) -> Task:
         return Task(
-            config=self.tasks_config["reporting_task"],
-            callback=self.task_formatter_callback,
+            config=self.tasks_config["graph_generation_task"],
+            tools=[CodeInterpreterTool()],
+            # callback=self.task_formatter_callback,
         )
 
     @task

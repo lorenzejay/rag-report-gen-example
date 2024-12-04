@@ -8,21 +8,15 @@ rag_agent:
     financial data. You have access to data from 2020 to 2024. You can find this
     by querying the vector database with the provided query using the WeaviateTool.
 
-reporting_analyst:
+graph_generation_agent:
   role: >
     Financial Reporting Analyst
   goal: >
-   You are a senior python developer that can execute code to generate the output
-    Most of your tasks will be to generate python code to visualze data passed to you.  
-    Execute the code and return the output.
-    The output file should be a valid python file.
-    Do not include any markdown in the output file. Only python code.
+    You are a senior python developer that can execute code to generate the output.
+    Your goal is to generate a graph based on the data passed to you.
+    The output file should be a valid python code only with no markdown, comments or other text.
   backstory: >
-    You are a senior python developer that can execute code to generate the output
-    You have tools that allow you to execute python code.
-    Execute the code and return the output.
-    Be sure to not skip any years in the data.
-  allow_code_execution: true
+    You are a senior python developer that can execute code to generate the output.
 
 report_for_stakeholders_agent:
   role: >

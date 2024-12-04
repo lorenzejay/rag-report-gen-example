@@ -37,7 +37,7 @@ class WeaviateTool(BaseTool):
         """
         wcd_url = os.environ["WEAVIATE_API_ENDPOINT"]
         wcd_api_key = os.environ["WEAVIATE_API_KEY"]
-        openai_key = os.getenv("OPENAI_API_KEY")
+        openai_key = os.environ["OPENAI_API_KEY"]
         if not openai_key:
             raise Exception("OPENAI_API_KEY is not set")
 

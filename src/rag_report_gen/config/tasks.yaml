@@ -8,19 +8,14 @@ rag_task:
     The answer to the relevant question: {query}
   agent: rag_agent
 
-reporting_task:
+graph_generation_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
     Generate a graph based on the data generating trends from the data.
-    Use matplotlib to generate the graphs.
-    You can use the code execution agent to execute the code and generate the output.
-    The output file should be a .ipynb (python jupiter notebook) file.
-    Any markdown should be formatted appropriately. With the code blocks properly formatted.
+    Use python, matplotlib to generate the graphs.
   expected_output: >
     Python code that can be executed to generate the output which consists of a graph report.
     The output file should be a valid python file.
-
-  agent: reporting_analyst
+  agent: graph_generation_agent
   output_file: "outputs/report.ipynb"
 
 report_for_stakeholders_task:
