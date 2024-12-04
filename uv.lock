@@ -3371,14 +3371,12 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "crewai", extra = ["tools"] },
-    { name = "crewai-tools" },
     { name = "weaviate-client" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "crewai", extras = ["tools"], specifier = ">=0.83.0,<1.0.0" },
-    { name = "crewai-tools", specifier = ">=0.14.0" },
     { name = "weaviate-client", specifier = ">=4.9.6" },
 ]
 
